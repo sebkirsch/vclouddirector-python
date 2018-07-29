@@ -34,11 +34,11 @@ def GetArgs():
 	return parser.parse_args()
 
 def GetToken(b64auth):
-  tokenurl = 'https://' + vcd_url + '/api/sessions'
-  headers = {"Accept" : "application/*+xml;version=30.0", "Authorization" : b64auth}
-  response = requests.get(tokenurl, headers=headers)
+  	tokenurl = 'https://' + vcd_url + '/api/sessions'
+ 	headers = {"Accept" : "application/*+xml;version=30.0", "Authorization" : b64auth}
+  	response = requests.get(tokenurl, headers=headers)
 	tokenval = response.headers['x-vcloud-authorization']
-  return tokenval
+  	return tokenval
 
 def GetApiResponse(url, headers):
 	geturl = 'https://' + vcd_url + url
@@ -55,7 +55,7 @@ def GetXmlValue(xmlnode, key):
 	return val
 
 def GetOrgMetadata(orgId, headers):
-  xmlroot = GetApiResponse('/api/admin/org/' + orgId + '/metadata', headers)
+  	xmlroot = GetApiResponse('/api/admin/org/' + orgId + '/metadata', headers)
 
 	counter = 0
 	json = '{'
@@ -105,7 +105,7 @@ def JsonOutput(data):
 		if counter > 0:
 			out += ','
 
-    itemcounter = 0
+    		itemcounter = 0
 		out += '{'
 		for key,value in entry.items():
 			if itemcounter > 0:
@@ -191,7 +191,7 @@ try:
 		print jsonoutput
 
 	# Exit
-  sys.exit(0)
+  	sys.exit(0)
 
 except Exception as error:
     if not args.quiet:
